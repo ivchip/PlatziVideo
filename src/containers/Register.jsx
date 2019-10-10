@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
-import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 import '../assets/styles/components/Register.scss';
 
 const Register = () => (
@@ -14,11 +14,11 @@ const Register = () => (
           <input className='input__register' type='password' placeholder='Contraseña' />
           <button className='button'>Registrarme</button>
         </form>
-        <a href='/login'>Iniciar sesión</a>
+        <Link to='/login'>
+          Iniciar sesión
+        </Link>
       </section>
     </section>
-
-    <Footer />
   </>
 );
 
