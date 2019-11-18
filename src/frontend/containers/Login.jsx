@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginRequest } from '../actions';
+import { loginUser } from '../actions';
 import Header from '../components/Header';
 import '../assets/styles/components/Login.scss';
 import googleIcon from '../assets/static/google-icon.png';
@@ -21,54 +21,55 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.loginRequest(form);
-    props.history.push('/');
+    props.loginUser(form, '/');
   };
 
   return (
     <>
       <Header isLogin />
-      <section className='login'>
-        <section className='login__container'>
+      <section className="login">
+        <section className="login__container">
           <h2>Inicia sesión</h2>
-          <form className='login__container--form' onSubmit={handleSubmit}>
+          <form className="login__container--form" onSubmit={handleSubmit}>
             <input
-              name='email'
-              className='input'
-              type='text'
-              placeholder='Correo'
+              name="email"
+              className="input"
+              type="text"
+              placeholder="Correo"
               onChange={handleInput}
+              required
             />
             <input
-              name='password'
-              className='input'
-              type='password'
-              placeholder='Contraseña'
+              name="password"
+              className="input"
+              type="password"
+              placeholder="Contraseña"
               onChange={handleInput}
+              required
             />
-            <button className='button' type='button'>Iniciar sesión</button>
-            <div className='login__container--remember-me'>
-              <label htmlFor='cbox1'>
-                <input type='checkbox' id='cbox1' value='first_checkbox' />
+            <button className="button" type="submit">Iniciar sesión</button>
+            <div className="login__container--remember-me">
+              <label htmlFor="cbox1">
+                <input type="checkbox" id="cbox1" value="first_checkbox" />
                 Recuérdame
               </label>
-              <a href='/'>Olvidé mi contraseña</a>
+              <a href="/">Olvidé mi contraseña</a>
             </div>
           </form>
-          <section className='login__container--social-media'>
+          <section className="login__container--social-media">
             <div>
-              <img src={googleIcon} alt='googleicon' />
+              <img src={googleIcon} alt="googleicon" />
                 Inicia sesión con Google
             </div>
             <div>
-              <img src={twitterIcon} alt='twitterIcon' />
+              <img src={twitterIcon} alt="twitterIcon" />
               Inicia sesión con Twitter
             </div>
           </section>
-          <p className='login__container--register'>
+          <p className="login__container--register">
             No tienes ninguna cuenta
             {' '}
-            <Link to='/register'>
+            <Link to="/register">
               Regístrate
             </Link>
           </p>
@@ -79,7 +80,7 @@ const Login = (props) => {
 };
 
 const mapDispatchToProps = {
-  loginRequest,
+  loginUser,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

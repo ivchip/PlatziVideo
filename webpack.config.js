@@ -6,7 +6,6 @@ const dotenv = require('dotenv');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-
 dotenv.config();
 
 const isProd = (process.env.NODE_ENV === 'production');
@@ -16,7 +15,8 @@ module.exports = {
   entry: './src/frontend/index.js',
   mode: process.env.NODE_ENV,
   output: {
-    path: isProd ? path.join(process.cwd(), './src/server/public') : '/',
+    path: isProd ?
+      path.join(process.cwd(), './src/server/public') : '/',
     filename: isProd ? 'assets/app-[hash].js' : 'assets/app.js',
     publicPath: '/',
   },
@@ -54,9 +54,6 @@ module.exports = {
         enforce: 'pre',
         use: {
           loader: 'eslint-loader',
-          options: {
-            fix: true,
-          },
         },
       },
       {
